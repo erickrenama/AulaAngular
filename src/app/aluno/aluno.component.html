@@ -1,0 +1,46 @@
+<form #form="ngForm" (ngSubmit)="salvar(form)">
+    <label class="form-label">Nome</label>
+    <input [(ngModel)]="aluno.nome" class="form-control" name="nome" required nome />
+    <div *ngIf="form.submitted && form.controls['nome'].errors" class="error">
+        <div *ngIf="form.controls['nome'].errors['required']">
+            Nome é obrigatório
+        </div>
+    </div>
+
+    <label class="form-label">RA</label>
+    <input [(ngModel)]="aluno.ra" class="form-control" name="ra" required ra />
+    <div *ngIf="form.submitted && form.controls['ra'].errors" class="error">
+        <div *ngIf="form.controls['ra'].errors['required']">
+            RA é obrigatório
+        </div>
+    </div>
+
+    <label class="form-label">Curso:</label>
+    <select id="cursos" name="curso">
+        <option value="ADS">ADS</option>
+        <option value="Gestao de TI">Gestao de TI</option>
+        <option value="Jogos">Jogos</option>
+    </select>
+    <input [(ngModel)]="aluno.curso" class="form-control" name="curso" required curso />
+    <div *ngIf="form.submitted && form.controls['curso'].errors" class="error">
+        <div *ngIf="form.controls['curso'].errors['required']">
+            Curso é obrigatório
+        </div>
+    </div>
+
+    <label class="form-label">Valor</label>
+    <input [(ngModel)]="aluno.valor" class="form-control" name="valor" required minlength="0" maxlength="1000" />
+    <div *ngIf="form.submitted && form.controls['valor'].errors" class="error">
+        <div *ngIf="form.controls['valor'].errors['minlength']">
+            Valor com menos de 0
+        </div>
+        <div *ngIf="form.controls['valor'].errors['maxlength']">
+            Valor com mais de 1000
+        </div>
+        <div *ngIf="form.controls['valor'].errors['required']">
+            Valor é obrigatório
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
